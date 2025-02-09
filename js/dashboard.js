@@ -25,4 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }]
         }
     });
+    const usuarioLogado = sessionStorage.getItem("usuarioLogado");
+
+    if (!usuarioLogado) {
+        alert("Você precisa fazer login primeiro!");
+        window.location.href = "../Login/index.html";
+    }
 });
+
+

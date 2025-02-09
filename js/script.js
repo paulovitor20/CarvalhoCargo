@@ -6,9 +6,18 @@ function handleLogin(event) {
 
     if (email === "teste@teste.com" && password === "1234") {
         alert("Login bem-sucedido!");
-        window.location.href = "./Dashboard/index.html"; // Redireciona após login
+
+        // Armazena sessão (opcional)
+        sessionStorage.setItem("usuarioLogado", email);
+
+        // Redireciona corretamente
+        window.location.href = "../Dashboard/index.html";
     } else {
         alert("Email ou senha inválidos!");
     }
 }
-    
+
+// Adiciona o evento ao formulário de login
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("loginForm").addEventListener("submit", handleLogin);
+});

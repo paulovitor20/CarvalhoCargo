@@ -17,23 +17,22 @@
         <div class="wrap-login">
             <h2 class="login-form-title">Bem Vindo!</h2>
 
-            <form id="loginForm">
+            <form class="login-form" id="loginForm">
                 <div class="wrap-input">
-                    <input id="email" class="input" type="email">
+                    <input class="input" type="email" id="email" required>
                     <span class="focus-input" data-placeholder="Email"></span>
-                    <span class="error-message" id="emailError"></span>
                 </div>
-
+            
                 <div class="wrap-input">
-                    <input id="senha" class="input" type="password">
+                    <input class="input" type="password" id="password" required>
                     <span class="focus-input" data-placeholder="Senha"></span>
-                    <span class="error-message" id="senhaError"></span>
                 </div>
-
+            
                 <div class="container-login-form-btn">
-                    <button type="submit" class="login-form-btn">Entrar</button>
+                    <button class="login-form-btn" type="submit">Entrar</button>
                 </div>
             </form>
+            
 
         </div>
     </div>
