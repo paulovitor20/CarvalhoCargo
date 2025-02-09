@@ -39,8 +39,8 @@
     line-height: 1.2;
     text-align: center;
 }
-.login-form-title p{
-    padding-bottom: 5px;
+h2{
+    padding-bottom: 15px;
 }
 .wrap-input{
     width: 100%;

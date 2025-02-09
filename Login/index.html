@@ -15,26 +15,26 @@
 
     <div class="container-login">
         <div class="wrap-login">
-            <form class="login-form">
-                <span class="login-form-title">Bem Vindo!</span>
-                <span class="login-form-title">
-                    <p>Carvalho Cargo</p>
-                </span>
-                
+            <h2 class="login-form-title">Bem Vindo!</h2>
+
+            <form id="loginForm">
                 <div class="wrap-input">
-                    <input class="input" type="email" id="email" required>
+                    <input id="email" class="input" type="email">
                     <span class="focus-input" data-placeholder="Email"></span>
+                    <span class="error-message" id="emailError"></span>
                 </div>
 
                 <div class="wrap-input">
-                    <input class="input" type="password" id="password" required>
+                    <input id="senha" class="input" type="password">
                     <span class="focus-input" data-placeholder="Senha"></span>
+                    <span class="error-message" id="senhaError"></span>
                 </div>
 
                 <div class="container-login-form-btn">
-                    <button class="login-form-btn" type="submit">Acessar</button>
+                    <button type="submit" class="login-form-btn">Entrar</button>
                 </div>
             </form>
+
         </div>
     </div>
 
@@ -43,6 +43,20 @@
     
     <!-- JS Personalizado -->
     <script src="../js/script.js"></script>
+    <script>
+        const inputs = document.querySelectorAll(".input");
 
+        inputs.forEach(input => {
+            input.addEventListener("focus", function() {
+                this.classList.add("has-val");
+            });
+
+            input.addEventListener("blur", function() {
+                if (this.value === "") {
+                    this.classList.remove("has-val");
+                }
+            });
+        });
+    </script>
 </body>
 </html>
