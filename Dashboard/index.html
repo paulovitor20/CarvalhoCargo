@@ -3,58 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Interativo</title>
+    <title>Painel de Controle</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 </head>
 <body>
-
-    <!-- Sidebar -->
-    <div class="d-flex">
-        <nav class="sidebar bg-dark text-white p-3">
-            <h4 class="text-center">Dashboard</h4>
-            <ul class="nav flex-column">
-                <li class="nav-item"><a href="#" class="nav-link text-white">📊 Visão Geral</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white">📈 Relatórios</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white">⚙ Configurações</a></li>
-            </ul>
-        </nav>
-
-        <!-- Conteúdo Principal -->
-        <div class="container-fluid p-4">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card text-white bg-primary mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Faturamento</h5>
-                            <p class="card-text">R$ 50.000</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card text-white bg-success mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Clientes Ativos</h5>
-                            <p class="card-text">1.200</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Gráficos -->
-            <div class="row">
-                <div class="col-md-6">
-                    <canvas id="graficoVendas"></canvas>
-                </div>
-                <div class="col-md-6">
-                    <canvas id="graficoClientes"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="../js/dashboard.js"></script>
-    
+	<div id="mySidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-size: 45px; margin: -20px;">&times;</a>
+		<img src="../assets/image.png" class="sizeLogo">
+       	<div class="separator"></div>
+		<a href="index.html" class=" effectHover"><img src="../assets/home.png" class="sizeImage">Painel Inicial</a>
+        <div class="separator"></div>
+        <div class="dropdown"></div>
+		<a href="registertEmployee.html" class=" effectHover"><img src="../img/add-user.png" class="sizeImage">Cadastrar Funcionário</a>
+     	<div class="separator"></div>
+		<a href="listEmployee.html" class=" effectHover"><img src="../img/clients.png" class="sizeImage">Listar Funcionários</a>
+		<div class="separator"></div>
+		<a href="listClients.html" class=" effectHover"><img src="../img/clients.png" class="sizeImage">Listar Clientes</a>
+		<div class="separator"></div>
+	</div>
+	<div class="buttonMenu">
+		<span onclick="openNav()">
+			<button style="background: none;box-shadow: 0 0 0 0;border: 0 none; outline: 0; padding: 0 5px 0 5px;">
+				<img src="../assets/menu.png" class="sizeImageMenu" >
+			</button>
+		</span>
+		<span onclick="openSecondNav()">
+			<p class="text-profile">Nome de usuário</p>
+			<button  style="border: none;margin-top: 30px; background: none;"><img src="../assets/profile2.png" class="imageProfile"></button>
+		</span>
+	</div>
+	<div id="mySecondsidenav" class="sidenav2">
+		<a href="javascript:void(0)" class="closeSecondNav" onclick="closeSecondNav()" style="font-size: 45px; margin-top: -70px;">&times;</a>
+		<div class="infoProfile">
+			<h1>Nome de usuário</h1>
+			<h5>seuemail@gmail.com</h5>
+			<p>Cargo: <b>Administrador</b></p>
+			<p>Equipe: <b>Alfa</b></p>
+			<button id="buttonModal" class="btn btn-secondary">Sair</button>
+		</div>	
+	</div>
+	<!-- Modal -->
+	<div id="openModal" class="modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+				</div>
+				<div class="modal-body">
+					<p class="text-center">Deseja realmente sair?</p>
+				</div>	
+				<div class="modal-footer">
+			        <button type="button" class="btn btn-danger">Sim</button>
+			      	<button type="button" class="btn btn-secondary close3">Não</button>
+		      	</div>
+			</div>
+		</div>
+	</div>
+	<div id="main">
+		<div class="container3">
+			<div class="row">
+		        <div class="card3">
+		            <div class="box">
+		                <div class="content3">
+		                    <h2>01</h2>
+		                    <h3>Em Processo</h3>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="card3">
+		            <div class="box">
+		                <div class="content3">
+		                    <h2>02</h2>
+		                    <h3>Reprovados</h3>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="card3">
+		            <div class="box">
+		                <div class="content3">
+		                    <h2>03</h2>
+		                    <h3>Aprovados</h3>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="card3">
+		            <div class="box">
+		                <div class="content3">
+		                    <h2>04</h2>
+		                    <h3>Total Vendas</h3>
+		                </div>
+		            </div>
+			    </div>
+			</div>
+	    </div>
+	</div>
+	<!--<footer id="footer">
+	  	<p class="text-footer text-center">Todos direitos reservados a Líder Auto Veículos Copyright©2021</p>
+	</footer>-->
+	<script type="text/javascript" src="../js/dashboard.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </body>
 </html>
