@@ -33,7 +33,7 @@
     padding: 8px 8px 8px 22px;
     text-decoration: none !important;
     font-size: 15px;
-    color: #000000;
+    color: #ffffff;
     display: block;
     transition: 0.3s;
     top:45px;
@@ -54,7 +54,7 @@
     padding: 8px 8px 8px 22px;
     text-decoration: none !important;
     font-size: 20px;
-    color: #000000;
+    color: #ffffff;
     display: block;
     transition: 0.3s;
   }
@@ -139,7 +139,7 @@
     margin: 0px 0px 10px 40px;  
   }
   .buttonMenu{
-    background: #111;
+    background: #000;
     height: auto;
     width: 100%;
     position: fixed;
@@ -478,7 +478,7 @@
     margin: 20px;
     padding: 20px;
     text-align: center;
-    color: black;
+    color: white;
     font-family: courier new;
   }
   
