@@ -5,7 +5,7 @@ function handleLogin(event) {
     const password = document.getElementById("password").value;
 
     if (email === "teste@teste.com" && password === "1234") {
-        alert("Login bem-sucedido!");
+        
 
         // Armazena sessão (opcional)
         sessionStorage.setItem("usuarioLogado", email);

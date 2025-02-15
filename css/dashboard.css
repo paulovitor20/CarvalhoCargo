@@ -127,8 +127,7 @@
   Sizes of menu images
   ------------------*/
   .sizeImageMenu{
-    width: 50px;
-    padding: 10px;
+    margin-left: 10px;
   }
   .sizeImage{
     width: 20px;
@@ -140,7 +139,7 @@
   }
   .buttonMenu{
     background: #000;
-    height: auto;
+    height: 50px;
     width: 100%;
     position: fixed;
     top: 0;
@@ -148,26 +147,19 @@
     z-index: 1;
   }
   .imageProfile{
-    width: 30px;
     position: absolute;
     float: right; 
     right: 0;
-    margin:-20px 10px 0px 1px; 
+    margin-top: 10px;
+    margin-right: 10px;
     border-radius:50%;
-    border:2px solid white;
+    border: none;
   }
   .imageProfile:hover{
     opacity: 0.6;
     transition: 0.5s;
   }
-  .text-profile{
-    position: absolute;
-    float: right;
-    right: 50px ;
-    margin-top: -35px;
-    color: white;
-    
-  }
+
   /*-----------------
   Separator of menus
   ------------------*/

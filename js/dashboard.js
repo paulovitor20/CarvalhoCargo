@@ -74,30 +74,20 @@ window.onclick = function(event)
    		modal.style.display = "none";
   	}
 }
-//Modal 2
-var modal2 = document.getElementById("modalProgress");
-var btn2 = document.getElementById("buttonProgress");
-var span2 = document.getElementsByClassName("close2")[0];
-var btnClose = document.getElementsByClassName("close1")[0];
-btn2.onclick = function()
-{
-	modal2.style.display = "block";
-}
-window.onclick = function(event)
-{
-	if (event.target == modal2)
-	{
-		modal2.style.display = "none";
-	}
-}
-span2.onclick = function() 
-{
-  	modal2.style.display = "none";
-}
-btnClose.onclick = function()
-{
-	modal2.style.display = "none";
-}
+document.addEventListener("DOMContentLoaded", function() {
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", function() {
+            // Remove a sessão do usuário
+            sessionStorage.removeItem("usuarioLogado");
+
+            // Redireciona para a tela de login
+            window.location.href = "../Login/index.html";
+        });
+    }
+});
+
 
 //search bar
 function search() 
@@ -130,13 +120,13 @@ function removerContato(botao) {
      
    botao.parentNode.innerHTML =(
         '<button type="button" class="btn btn-success btn-xs" onclick="vincularContato(this)"><span class="glyphicon glyphicon-ok">Ativar</span></button>')
- }
+}
  
- function vincularContato(botao) {
+function vincularContato(botao) {
  
     console.log("clicou na função vincularContato");
  
    botao.parentNode.innerHTML =(
         '<button type="button" class="btn btn-danger btn-xs" onclick="removerContato(this)"><span class="glyphicon glyphicon-ok">Desativar</span></button>')
  
- }
+}
