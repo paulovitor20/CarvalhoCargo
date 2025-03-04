@@ -1,132 +1,73 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const usuarioLogado = sessionStorage.getItem("usuarioLogado");
+  const usuarioLogado = sessionStorage.getItem("usuarioLogado");
 
-    if (!usuarioLogado) {
-        alert("Você precisa fazer login primeiro!");
-        window.location.href = "../Login/index.html";
-    }
-});
-function openNav() 
-{
-	document.getElementById("mySidenav").style.width = "230px";
-	document.getElementById("main").style.marginLeft = "230px";
-}
-function closeNav() 
-{
-	document.getElementById("mySidenav").style.width = "0";
-	document.getElementById("main").style.marginLeft = "0";
-
-}
-function openSecondNav() 
-{
-	document.getElementById("mySidenav").style.width="0";
-	document.getElementById("main").style.marginLeft = "0";
- 	document.getElementById("mySecondsidenav").style.width = "400px";
-}
-function closeSecondNav() 
-{
-	document.getElementById("mySidenav").style.width = "230px";
-	document.getElementById("main").style.marginLeft = "230px";
-
-	document.getElementById("mySecondsidenav").style.width = "0";
-}
-
-
-//Code of Register Client
-var coll = document.getElementsByClassName("collapsible");
-var i;
-for (i = 0; i < coll.length; i++) 
-{
-	coll[i].addEventListener("click", function() 
-	{
-		this.classList.toggle("active");
-		var content = this.nextElementSibling;
-		if (content.style.display === "block") 
-		{
-			content.style.display = "none";
-		} else {
-			content.style.display = "block";
-		}
-	});
-}
-
-// Get the modal
-var modal = document.getElementById("openModal");
-var btn = document.getElementById("buttonModal");
-var span = document.getElementsByClassName("close")[0];
-var btnClose1 = document.getElementsByClassName("close3")[0];
-btn.onclick = function() 
-{
-  	modal.style.display = "block";
-}
-span.onclick = function() 
-{
-  	modal.style.display = "none";
-}
-btnClose1.onclick = function()
-{
-	modal.style.display = "none"
-}
-window.onclick = function(event) 
-{
-  	if (event.target == modal) 
-  	{
-   		modal.style.display = "none";
-  	}
-}
-document.addEventListener("DOMContentLoaded", function() {
-    const logoutBtn = document.getElementById("logoutBtn");
-
-    if (logoutBtn) {
-        logoutBtn.addEventListener("click", function() {
-            // Remove a sessão do usuário
-            sessionStorage.removeItem("usuarioLogado");
-
-            // Redireciona para a tela de login
-            window.location.href = "../Login/index.html";
-        });
-    }
-});
-
-
-//search bar
-function search() 
-{
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInputSearch");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("tableClients");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) 
-  {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) 
-    {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) 
-      {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
+  if (!usuarioLogado) {
+    alert("Você precisa fazer login primeiro!");
+    window.location.href = "../Login/index.html";
   }
+});
+let setorAtual = "Financeiro";
+
+function selecionarSetor(setor) {
+  setorAtual = setor;
+  document.getElementById("setorTitulo").innerText = `Setor: ${setor}`;
+  document.getElementById("pendenciaTabela").innerHTML = "";
 }
 
-//Double button function
-function removerContato(botao) {
+document.getElementById("pendenciaForm").onsubmit = function (e) {
+  e.preventDefault();
 
-    console.log("clicou na função removerContato");
-     
-   botao.parentNode.innerHTML =(
-        '<button type="button" class="btn btn-success btn-xs" onclick="vincularContato(this)"><span class="glyphicon glyphicon-ok">Ativar</span></button>')
+  const banco = document.getElementById("banco").value;
+  const data = document.getElementById("data").value;
+  const fornecedor = document.getElementById("fornecedor").value;
+  const valor = document.getElementById("valor").value;
+  const transacao = document.getElementById("transacao").value;
+  const responsavel = document.getElementById("responsavel").value;
+  const obs = document.getElementById("obs").value;
+  const status = document.getElementById("status").value;
+
+  if (banco && data && fornecedor && valor && transacao && responsavel && status) {
+    const tabela = document.getElementById("pendenciaTabela");
+    const row = tabela.insertRow();
+
+    row.innerHTML = `
+      <td>${banco}</td>
+      <td>${data}</td>
+      <td>${fornecedor}</td>
+      <td>R$ ${parseFloat(valor).toFixed(2)}</td>
+      <td>${transacao}</td>
+      <td>${responsavel}</td>
+      <td>${obs}</td>
+      <td>${status}</td>
+      <td>
+        <button class="btn btn-warning btn-sm me-2" onclick="editar(this)">Editar</button>
+        <button class="btn btn-danger btn-sm" onclick="excluir(this)">Excluir</button>
+      </td>
+    `;
+
+    document.getElementById("pendenciaForm").reset();
+  }
+};
+
+function excluir(btn) {
+  btn.parentElement.parentElement.remove();
 }
- 
-function vincularContato(botao) {
- 
-    console.log("clicou na função vincularContato");
- 
-   botao.parentNode.innerHTML =(
-        '<button type="button" class="btn btn-danger btn-xs" onclick="removerContato(this)"><span class="glyphicon glyphicon-ok">Desativar</span></button>')
- 
+
+function editar(btn) {
+  const row = btn.parentElement.parentElement;
+  document.getElementById("banco").value = row.cells[0].innerText;
+  document.getElementById("data").value = row.cells[1].innerText;
+  document.getElementById("fornecedor").value = row.cells[2].innerText;
+  document.getElementById("valor").value = row.cells[3].innerText.replace("R$ ", "");
+  document.getElementById("transacao").value = row.cells[4].innerText;
+  document.getElementById("responsavel").value = row.cells[5].innerText;
+  document.getElementById("obs").value = row.cells[6].innerText;
+  document.getElementById("status").value = row.cells[7].innerText;
+
+  row.remove();
+}
+
+function voltarEspera() {
+  localStorage.removeItem("departamentoSelecionado"); // Remove o setor selecionado
+  window.location.href = "waitingroom.html"; // Redireciona para a tela de espera
 }
