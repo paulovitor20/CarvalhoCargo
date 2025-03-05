@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,13 +95,19 @@
 	<script>
 		window.onload = function () {
 			const setor = localStorage.getItem("departamentoSelecionado");
-			if (setor) {
-				document.getElementById("tituloSetor").innerText = setor;
+
+			if (setor !== "Financeiro") {
+				alert("Acesso não permitido!");
+				window.location.href = "waitingroom.html"; // Redireciona para a sala de espera
+			} else {
+				document.getElementById("setorSelecionado").innerText = "Departamento: " + setor;
 			}
 		};
+
 	</script>
 
 	<script type="text/javascript" src="../js/dashboard.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </body>
+
 </html>

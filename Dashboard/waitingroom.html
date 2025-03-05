@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,24 +8,21 @@
     <link href="styles.css" rel="stylesheet">
 </head>
 
-<body class="d-flex justify-content-center align-items-center vh-100">
-    <div class="container text-center">
-        <div class="card shadow-lg p-4">
-            <h1 class="mb-4">Bem-vindo!</h1>
-            <p class="lead">Escolha o departamento para acessar:</p>
-            <div class="d-flex flex-column gap-3 mt-4">
-                <button class="btn btn-primary btn-lg" onclick="escolherDepartamento('Financeiro')">Financeiro</button>
-                <button class="btn btn-secondary btn-lg" onclick="escolherDepartamento('Faturamento')">Faturamento</button>
-                <button class="btn btn-primary btn-lg" onclick="escolherDepartamento('Controladoria')">Controladoria</button>
-                <button class="btn btn-secondary btn-lg" onclick="escolherDepartamento('Frota')">Frota</button>
-                <button class="btn btn-primary btn-lg" onclick="escolherDepartamento('Agenciamento')">Agenciamento</button>
-            </div>
-        </div>
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div class="card text-center p-5 shadow-lg">
+        <h2>Escolha o Departamento</h2>
+        <button class="btn btn-primary my-2" onclick="escolherSetor('Financeiro')">Financeiro</button>
+        <button class="btn btn-secondary my-2" onclick="escolherSetor('Faturamento')">Faturamento</button>
     </div>
     <script>
-        function escolherDepartamento(departamento) {
-            localStorage.setItem("departamentoSelecionado", departamento);
-            window.location.href = "index.html";
+        function escolherSetor(setor) {
+            localStorage.setItem("departamentoSelecionado", setor);
+
+            if (setor === "Financeiro") {
+                window.location.href = "index.html"; // Redireciona para a planilha
+            } else {
+                alert("Acesso não permitido para este setor!");
+            }
         }
     </script>
 </body>
